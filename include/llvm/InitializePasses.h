@@ -18,6 +18,10 @@ namespace llvm {
 
 class PassRegistry;
 
+/// Initialize custom BIC file
+void initializeBIC(PassRegistry &);
+void initializeBranchInstCountPass(PassRegistry &);
+
 /// Initialize all passes linked into the TransformUtils library.
 void initializeCore(PassRegistry&);
 

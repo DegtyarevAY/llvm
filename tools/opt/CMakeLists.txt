@@ -18,6 +18,7 @@ set(LLVM_LINK_COMPONENTS
   TransformUtils
   Vectorize
   Passes
+  BranchInstCount
   )
 
 # Support plugins.
@@ -35,6 +36,7 @@ add_llvm_tool(opt
 
   DEPENDS
   intrinsics_gen
+  LLVMBranchInstCount
   )
 export_executable_symbols(opt)
 

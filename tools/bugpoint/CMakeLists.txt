@@ -16,6 +16,7 @@ set(LLVM_LINK_COMPONENTS
   Target
   TransformUtils
   Vectorize
+  BranchInstCount
   )
 
 # Support plugins.
@@ -34,6 +35,7 @@ add_llvm_tool(bugpoint
 
   DEPENDS
   intrinsics_gen
+  LLVMBranchInstCount
   )
 export_executable_symbols(bugpoint)
 

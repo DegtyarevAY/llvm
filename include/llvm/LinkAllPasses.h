@@ -1,8 +1,9 @@
 //===- llvm/LinkAllPasses.h ------------ Reference All Passes ---*- C++ -*-===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
-// See https://llvm.org/LICENSE.txt for license information.
-// SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
+//                      The LLVM Compiler Infrastructure
+//
+// This file is distributed under the University of Illinois Open Source
+// License. See LICENSE.TXT for details.
 //
 //===----------------------------------------------------------------------===//
 //
@@ -56,6 +57,8 @@
 #include "llvm/Transforms/Vectorize.h"
 #include <cstdlib>
 
+#include "llvm/Analysis/BranchInstCount/BICinit.h"
+
 namespace {
   struct ForcePassLinking {
     ForcePassLinking() {
@@ -66,6 +69,8 @@ namespace {
       if (std::getenv("bar") != (char*) -1)
         return;
 
+
+      (void) llvm::createBranchInstCountPass();
       (void) llvm::createAAEvalPass();
       (void) llvm::createAggressiveDCEPass();
       (void) llvm::createAggressiveInstCombinerPass();
@@ -102,7 +107,6 @@ namespace {
       (void) llvm::createGCOVProfilerPass();
       (void) llvm::createPGOInstrumentationGenLegacyPass();
       (void) llvm::createPGOInstrumentationUseLegacyPass();
-      (void) llvm::createPGOInstrumentationGenCreateVarLegacyPass();
       (void) llvm::createPGOIndirectCallPromotionLegacyPass();
       (void) llvm::createPGOMemOPSizeOptLegacyPass();
       (void) llvm::createInstrProfilingLegacyPass();
